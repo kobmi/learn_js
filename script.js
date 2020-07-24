@@ -42,3 +42,54 @@
 // personalMevieDB.movies[c] = d;
 // console.log(personalMevieDB);
 
+// ----------------УСЛОВИЯ-------------------------------------------------
+// if, else if, else
+// const num = 50;
+// if (num === 50) {
+//   console.log("num = 50");
+// } else if (num > 50) {
+//   console.log("num > 50");
+// } else {
+//   console.log("num < 50 ");
+// }
+
+// true ? console.log("True") : console.log("False");
+
+// switch case
+// let num = 51;
+
+// switch (num) {
+//   case "49":
+//     console.log("num = 49");
+//     break;
+//   case "51":
+//     console.log("num = 50");
+//     break;
+//   default:
+//     console.log("Ne podhodit");
+//     break;
+// }
+
+// -----------------------ЦИКЛЫ--------------------------------------------
+// while
+// let num = 0;
+// while (num < 10) {
+//   console.log(num);
+//   num += 2;
+// }
+
+// do while
+
+// let num = 0;
+// do {
+//   console.log(num);
+//   num++;
+// } while (num < 10);
+
+for (let i = 1; i < 10; i++) {
+  if (i === 6) {
+    // break; // прерывает цикл
+    continue;
+  }
+  console.log(i);
+}
