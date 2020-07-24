@@ -86,10 +86,10 @@
 //   num++;
 // } while (num < 10);
 
-for (let i = 1; i < 10; i++) {
-  if (i === 6) {
-    // break; // прерывает цикл
-    continue;
-  }
-  console.log(i);
-}
+// for (let i = 1; i < 10; i++) {
+//   if (i === 6) {
+//     // break; // прерывает цикл
+//     // continue; // продолжает цикл, но пропускает эту итерацию
+//   }
+//   console.log(i);
+// }
