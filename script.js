@@ -292,10 +292,12 @@ P.S. Функции вызывать не обязательно*/
 //     border: "black",
 //     bg: "red",
 //   },
+//   makeTest: function () {
+//     console.log("test");
+//   },
 // };
 
-// delete
-// delete options.name;
+// delete delete options.name;
 // console.log(options);
 
 // function showOptions(obj) {
@@ -310,4 +312,35 @@ P.S. Функции вызывать не обязательно*/
 //   }
 // }
 // showOptions(options);
+// Деструктуризация---------------------------------------------------------------------------------------------------------
+// const { border, bg } = options.colors;
+// console.log(border);
 
+// массивы, псевдомассивы----------------------------------------------------------------------------------------------------
+// const arr = [1, 2, 3, 4];
+
+// .pop() удаляет и возврщает последний элемент
+// .push() добавляет в конец массива элемент
+
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
+
+// for (let elem of arr) {
+//   console.log(elem);
+// }
+
+// arr.forEach(function (elem, index, arr) {
+//   console.log(`${index}: ${elem} внутри массива: ${arr}`);
+// });
+
+// const str = prompt("", "");
+// const products = str.split(", ");
+// products.sort();
+// console.log(products.join("..."));
+
+const arr = [123, 36, 12, 6, 2, 13];
+console.log(arr.sort(compare));
+function compare(a, b) {
+  return a - b;
+}
