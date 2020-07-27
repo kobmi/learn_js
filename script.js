@@ -187,70 +187,127 @@ genres
 
 P.S. Функции вызывать не обязательно*/
 
-let numbersOfFilms;
+// let numbersOfFilms;
 
-const personalMevieDB = {
-  count: numbersOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  privat: false,
-};
+// const personalMevieDB = {
+//   count: numbersOfFilms,
+//   movies: {},
+//   actors: {},
+//   genres: [],
+//   privat: false,
+// };
 
-function start() {
-  numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
+// function start() {
+//   numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
 
-  while (
-    numbersOfFilms == "" ||
-    numbersOfFilms == null ||
-    isNaN(numbersOfFilms)
-  ) {
-    numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
-  }
-}
+//   while (
+//     numbersOfFilms == "" ||
+//     numbersOfFilms == null ||
+//     isNaN(numbersOfFilms)
+//   ) {
+//     numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
+//   }
+// }
 
-function rememberMyFilms() {
-  for (let i = 0; i < 2; i++) {
-    const a = prompt("Один из последних просмотренных фильмов?"),
-      b = prompt("На сколько оцените его?");
+// function rememberMyFilms() {
+//   for (let i = 0; i < 2; i++) {
+//     const a = prompt("Один из последних просмотренных фильмов?"),
+//       b = prompt("На сколько оцените его?");
 
-    if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-      personalMevieDB.movies[a] = b;
-      console.log("yes");
-    } else {
-      console.log("error");
-      i--;
-    }
-  }
-}
+//     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+//       personalMevieDB.movies[a] = b;
+//       console.log("yes");
+//     } else {
+//       console.log("error");
+//       i--;
+//     }
+//   }
+// }
 
-function detectPersonalLevel() {
-  if (personalMevieDB.count < 10) {
-    console.log("Просмотрено довольно мало фильмов");
-  } else if (personalMevieDB.count >= 10 && personalMevieDB.count < 30) {
-    console.log("Вы классический зритель");
-  } else if (personalMevieDB.count >= 30) {
-    console.log("Вы киноман");
-  } else {
-    console.log("Произошла ошибка");
-  }
-}
+// function detectPersonalLevel() {
+//   if (personalMevieDB.count < 10) {
+//     console.log("Просмотрено довольно мало фильмов");
+//   } else if (personalMevieDB.count >= 10 && personalMevieDB.count < 30) {
+//     console.log("Вы классический зритель");
+//   } else if (personalMevieDB.count >= 30) {
+//     console.log("Вы киноман");
+//   } else {
+//     console.log("Произошла ошибка");
+//   }
+// }
 
-function showMyDB(hidden) {
-  if (!hidden) {
-    console.log(personalMevieDB);
-  }
-}
+// function showMyDB(hidden) {
+//   if (!hidden) {
+//     console.log(personalMevieDB);
+//   }
+// }
 
-function writeYourGenres() {
-  for (let i = 1; i <= 3; i++) {
-    personalMevieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
-  }
-}
+// function writeYourGenres() {
+//   for (let i = 1; i <= 3; i++) {
+//     personalMevieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+//   }
+// }
 
 // start();
 // rememberMyFilms();
 // detectPersonalLevel();
 // writeYourGenres();
-writeYourGenres();
-showMyDB(personalMevieDB.privat);
+// writeYourGenres();
+// showMyDB(personalMevieDB.privat);
+// ------------------------------------Callback-------------------------------------------
+
+// function first() {
+//   setTimeout(function () {
+//     console.log(1);
+//   }, 2000);
+// }
+// function second() {
+//   console.log(2);
+// }
+
+// first();
+// second();
+
+// function learnJS(lang, callback) {
+//   setTimeout(function () {
+//     console.log(`Я учу ${lang}`);
+//     callback();
+//   }, 2000);
+// }
+// function done() {
+//   setTimeout(function () {
+//     console.log("Я прошел этот урок");
+//   }, 1000);
+// }
+// learnJS("JS", done);
+
+// -----------------------------------------Objects------------------------------------
+
+// const obj = new Object();
+// const options = {
+//   name: "test",
+//   width: 1024,
+//   height: 1024,
+//   colors: {
+//     border: "black",
+//     bg: "red",
+//   },
+// };
+
+// delete
+// delete options.name;
+// console.log(options);
+
+// function showOptions(obj) {
+//   for (let key in obj) {
+//     if (typeof obj[key] === "object") {
+//       for (let i in obj[key]) {
+//         console.log(`Свойство: ${i}, значение ${obj[key][i]}`);
+//       }
+//     } else {
+//       console.log(`Свойство: ${key}, значение ${obj[key]}`);
+//     }
+//   }
+// }
+// showOptions(options);
+
