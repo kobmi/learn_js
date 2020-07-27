@@ -112,24 +112,145 @@
 //   privat: false,
 // };
 
-for (let i = 0; i < 2; i++) {
-  const a = prompt("Один из последних просмотренных фильмов?"),
-    b = prompt("На сколько оцените его?");
+// for (let i = 0; i < 2; i++) {
+//   const a = prompt("Один из последних просмотренных фильмов?"),
+//     b = prompt("На сколько оцените его?");
 
-  if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-    personalMevieDB.movies[a] = b;
-    console.log("yes");
-  } else {
-    console.log("error");
-    i--;
+//   if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+//     personalMevieDB.movies[a] = b;
+//     console.log("yes");
+//   } else {
+//     console.log("error");
+//     i--;
+//   }
+// }
+// if (personalMevieDB.count < 10) {
+//   console.log("Просмотрено довольно мало фильмов");
+// } else if (personalMevieDB.count >= 10 && personalMevieDB.count < 30) {
+//   console.log("Вы классический зритель");
+// } else if (personalMevieDB.count >= 30) {
+//   console.log("Вы киноман");
+// } else {
+//   console.log("Произошла ошибка");
+// }
+
+// ---------------------Функции--------------------------------------------
+// // FUNCTION DECLARATION
+// function foo() {
+//   код;
+// }
+// // FUNCTION EXPRESSION
+// let foo = function () {
+//   код;
+// };
+
+// function showFirstMessage() {
+//   console.log("Hello from function");
+// }
+// showFirstMessage();
+
+// function showSecondMessage(text) {
+//   console.log(text);
+// }
+// showFirstMessage("Hello from function");
+
+// function calc(a, b) {
+//   return a + b;
+// }
+// console.log(calc(5, 10));
+
+// const calc = (a, b) => a + b;
+// console.log(calc(1, 3));
+
+// ------------------Методы и свойства строк и чисел------------------------
+// .length
+// .toLowerCase()
+// .toUpperCase()
+// .indexOF() поиск подстроки, возращает индекс, если не находит - то -1
+// slice()
+// const logg = "Hello world";
+// console.log(logg.slice(6, 11)); // world
+
+// .parseInt()
+// .parseFloat()
+
+//Практика часть 3------------------------------------------------------
+
+/*1) Первую часть задания повторить по уроку
+
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+
+P.S. Функции вызывать не обязательно*/
+
+let numbersOfFilms;
+
+const personalMevieDB = {
+  count: numbersOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+};
+
+function start() {
+  numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
+
+  while (
+    numbersOfFilms == "" ||
+    numbersOfFilms == null ||
+    isNaN(numbersOfFilms)
+  ) {
+    numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
   }
 }
-if (personalMevieDB.count < 10) {
-  console.log("Просмотрено довольно мало фильмов");
-} else if (personalMevieDB.count >= 10 && personalMevieDB.count < 30) {
-  console.log("Вы классический зритель");
-} else if (personalMevieDB.count >= 30) {
-  console.log("Вы киноман");
-} else {
-  console.log("Произошла ошибка");
+
+function rememberMyFilms() {
+  for (let i = 0; i < 2; i++) {
+    const a = prompt("Один из последних просмотренных фильмов?"),
+      b = prompt("На сколько оцените его?");
+
+    if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+      personalMevieDB.movies[a] = b;
+      console.log("yes");
+    } else {
+      console.log("error");
+      i--;
+    }
+  }
 }
+
+function detectPersonalLevel() {
+  if (personalMevieDB.count < 10) {
+    console.log("Просмотрено довольно мало фильмов");
+  } else if (personalMevieDB.count >= 10 && personalMevieDB.count < 30) {
+    console.log("Вы классический зритель");
+  } else if (personalMevieDB.count >= 30) {
+    console.log("Вы киноман");
+  } else {
+    console.log("Произошла ошибка");
+  }
+}
+
+function showMyDB(hidden) {
+  if (!hidden) {
+    console.log(personalMevieDB);
+  }
+}
+
+function writeYourGenres() {
+  for (let i = 1; i <= 3; i++) {
+    personalMevieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+  }
+}
+
+// start();
+// rememberMyFilms();
+// detectPersonalLevel();
+// writeYourGenres();
+writeYourGenres();
+showMyDB(personalMevieDB.privat);
