@@ -339,8 +339,14 @@ P.S. Функции вызывать не обязательно*/
 // products.sort();
 // console.log(products.join("..."));
 
-const arr = [123, 36, 12, 6, 2, 13];
-console.log(arr.sort(compare));
-function compare(a, b) {
-  return a - b;
-}
+// const arr = [123, 36, 12, 6, 2, 13];
+// console.log(arr.sort(compare));
+// function compare(a, b) {
+//   return a - b;
+// }
+// // сортировка по возростанию
+// const arr2 = [123, 36, 12, 6, 2, 13];
+// console.log(arr2.sort(compare));
+// function compare(a, b) {
+//   return b - a;
+// }
