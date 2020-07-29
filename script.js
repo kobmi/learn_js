@@ -442,33 +442,32 @@ P.S. Функции вызывать не обязательно*/
 "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
 
 // Код возьмите из предыдущего домашнего задания
-
-let numbersOfFilms;
-
-const personalMevieDB = {
-  count: numbersOfFilms,
+/*
+const personalMovieDB = {
+  count: 0,
   movies: {},
   actors: {},
   genres: [],
   privat: false,
   start: function () {
-    numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
+    personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
+
     while (
-      numbersOfFilms == "" ||
-      numbersOfFilms == null ||
-      isNaN(numbersOfFilms)
+      personalMovieDB.count == "" ||
+      personalMovieDB.count == null ||
+      isNaN(personalMovieDB.count)
     ) {
-      numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
+      personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
     }
   },
   rememberMyFilms: function () {
     for (let i = 0; i < 2; i++) {
-      const a = prompt("Один из последних просмотренных фильмов?"),
-        b = prompt("На сколько оцените его?");
+      const a = prompt("Один из последних просмотренных фильмов?", ""),
+        b = prompt("На сколько оцените его?", "");
 
       if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-        personalMevieDB.movies[a] = b;
-        console.log("yes");
+        personalMovieDB.movies[a] = b;
+        console.log("done");
       } else {
         console.log("error");
         i--;
@@ -476,41 +475,105 @@ const personalMevieDB = {
     }
   },
   detectPersonalLevel: function () {
-    if (personalMevieDB.count < 10) {
+    if (personalMovieDB.count < 10) {
       console.log("Просмотрено довольно мало фильмов");
-    } else if (personalMevieDB.count >= 10 && personalMevieDB.count < 30) {
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
       console.log("Вы классический зритель");
-    } else if (personalMevieDB.count >= 30) {
+    } else if (personalMovieDB.count >= 30) {
       console.log("Вы киноман");
     } else {
       console.log("Произошла ошибка");
     }
   },
-  sshowMyDB: function (hidden) {
+  showMyDB: function (hidden) {
     if (!hidden) {
-      console.log(personalMevieDB);
-    }
-  },
-  writeYourGenres: function () {
-    for (let i = 1; i <= 3; i++) {
-      personalMevieDB.genres[i - 1] = prompt(
-        `Ваш любимый жанр под номером ${i}`
-      );
+      console.log(personalMovieDB);
     }
   },
   toggleVisibleMyDB: function () {
-    if (personalMevieDB.privat === false) {
-      personalMevieDB.privat = true;
+    if (personalMovieDB.privat) {
+      personalMovieDB.privat = false;
     } else {
-      personalMevieDB.privat = false;
+      personalMovieDB.privat = true;
     }
   },
+  writeYourGenres: function () {
+    for (let i = 1; i < 2; i++) {
+      let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+      if (genre === "" || genre == null) {
+        console.log("Вы ввели некорректные данные или не ввели их вовсе");
+        i--;
+      } else {
+        personalMovieDB.genres[i + 1] = genre;
+      }
+
+      // Альтернативный вариант из урока
+
+      // let genres = prompt(`Введите ваши любимые жанры через запятую`).toLowerCase();
+
+      // if (genres === '' || genres == null) {
+      //     console.log('Вы ввели некорректные данные или не ввели их вовсе');
+      //     i--;
+      // } else {
+      //     personalMovieDB.genres = genres.split(', ');
+      //     personalMovieDB.genres.sort();
+      // }
+    }
+
+    personalMovieDB.genres.forEach((item, i) => {
+      console.log(`Любимый жанр ${i + 1} - это ${item}`);
+    });
+  },
 };
+personalMovieDB.writeYourGenres();
+*/
 
+// --------------------------------------------Динамическая типизация-----------------------------------------------------
+/*
+// to string
+// 1)
+console.log(typeof String(null)); //string
+// 2)
+console.log(typeof String(1 + "")); //string
 
-// personalMevieDB.start();
-// rememberMyFilms();
-// detectPersonalLevel();
-// writeYourGenres();
-// writeYourGenres();
-// showMyDB(personalMevieDB.privat);
+// to number
+// 1)
+console.log(typeof Number("4")); //number
+// 2)
+console.log(typeof +"5"); //number
+// 3)
+console.log(typeof parseInt("15px", 10)); //number
+
+// to boolean
+// 1)
+// False
+// 0,null,NaN,"",undefined
+// True
+// [],{},strings и все остальное
+
+// let switcher = null;
+// if (switcher) {
+//   console.log("Working...");
+// }
+
+// switcher = 1;
+// if (switcher) {
+//   console.log("Working...");
+// }
+// 2)
+console.log(typeof Boolean("4")); //boolean
+// 3)
+console.log(typeof !!"444"); //boolean: true
+*/
+
+// --------------------------------------------ЗАДАЧКИ----------------------------------------------------------------
+
+// console.log([] + false - null + true); //NaN
+
+// let y = 1;
+// let x = (y = 2);
+// alert(x); //2
+
+// console.log([] + 1 + 2); //12 строка
+
+// console.log("10"[0]);
