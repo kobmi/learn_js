@@ -1,17 +1,13 @@
 "use strict";
-
 /* Задание на урок:
-
 1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
 'Сколько фильмов вы уже посмотрели?'
-
 2) Создать объект personalMovieDB и в него поместить такие свойства:
     - count - сюда передается ответ на первый вопрос
     - movies - в это свойство поместить пустой объект
     - actors - тоже поместить пустой объект
     - genres - сюда поместить пустой массив
     - privat - в это свойство поместить boolean(логическое) значение false
-
 3) Задайте пользователю по два раза вопросы:
     - 'Один из последних просмотренных фильмов?'
     - 'На сколько оцените его?'
@@ -20,9 +16,7 @@
     movies: {
         'logan': '8.1'
     }
-
 Проверить, чтобы все работало без ошибок в консоли */
-
 // const numbersOfFilms = Number(prompt("Сколько фильмов вы уже посмотрели?", ""));
 
 // const personalMevieDB = {
@@ -612,3 +606,130 @@ console.log(typeof !!"444"); //boolean: true
 // 7)
 
 // ---------------------------------------DOM-------------------------------------------------
+// console.log(document.querySelector("#button")); // <input id="button" type="submit">
+// console.log(document.querySelector("#parent input")); //<input>
+// console.log(document.querySelector("#parent [value='2']")); //<input value="2"></input>
+// console.log(document.querySelectorAll(".www")[1]);
+
+// const btns = document.querySelectorAll("input[type='submit']");
+// btns.forEach((btn, i) => {
+//   btn.addEventListener("click", () => {
+//     console.log(`button ${i + 1}`);
+//   });
+// });
+
+// Дана кнопка. По двойному клику по ней выведите на экран какое-нибудь сообщение.
+// const btn = document.querySelector("#button1");
+// btn.addEventListener("click", () => {
+//   console.log("some text");
+// });
+
+// btn.addEventListener("mouseover", () => {
+//   console.log("mouseover");
+// });
+
+// btn.addEventListener("mouseout", () => {
+//   console.log("mouseout");
+// });
+
+// btn.addEventListener("dblclick", () => {
+//   console.log("dblclick");
+// });
+
+// const func = () => {
+//   console.log("hello from func");
+// };
+
+// btn.addEventListener("click", func);
+// -----------------------------------------------------------------------------------
+// Сделайте так, чтобы по клику на первую кнопку выполнилась функция func1, а по клику на вторую - функция func2.
+// const func1 = () => {
+//   console.log("hello from func1");
+// };
+
+// const func2 = () => {
+//   console.log("hello from func2 ");
+// };
+
+// const btn1 = document.querySelector("input[value='button1']");
+// const btn2 = document.querySelector("input[value='button2']");
+
+// btn1.addEventListener("click", func1);
+// btn2.addEventListener("click", func2);
+//---------------------------------------------------------------------------------------------
+// Даны 5 абзацев:
+// <p id="elem1">text</p>
+// <p id="elem2">text</p>
+// <p id="elem3">text</p>
+// <p id="elem4">text</p>
+// <p id="elem5">text</p>
+// Дана следующая функция:
+
+// function func() {
+// 	alert('message');
+// }
+// Привяжите эту функцию ко всем 5-ти абзацам.
+
+// const func = () => {
+//   console.log("Hello from func");
+// };
+
+// const paragraphs = document.querySelectorAll("p");
+
+// paragraphs.forEach((p) => {
+//   p.addEventListener("click", func);
+// });
+// -------------------------------------------------------------------------------------------------
+// Дан абзац:
+
+// <p id="elem">text</p>
+// Даны следующие функции:
+// Привяжите все эти функции к нашему абзацу.
+// const funcs = {
+//   func1: () => {
+//     console.log("func1");
+//   },
+//   func2: () => {
+//     console.log("func2");
+//   },
+//   func3: () => {
+//     console.log("func3");
+//   },
+// };
+
+// const paragraph = document.querySelector("#elem");
+
+// for (let func in funcs) {
+//   paragraph.addEventListener("click", funcs[func]);
+// }
+//----------------------------------------------------------------------------------------------------
+// Дана кнопка. Привяжите к ней три анонимных обработчика двойного клика по ней. Пусть первый обработчик выводит число 1, второй обработчик - число 2, а третий - число 3.
+// const btn3 = document.querySelector("#button3");
+// btn3.addEventListener("click", () => {
+//   console.log("1");
+// });
+// btn3.addEventListener("click", () => {
+//   console.log("2");
+// });
+// btn3.addEventListener("click", () => {
+//   console.log("3");
+// });
+//-----------------------------------------------------------------------------------------------------
+// Даны два абзаца, содержащие своим текстом какие-то числа, и кнопка. По нажатию на кнопку выведите на экран сумму хранящихся чисел.
+
+// Даны два абзаца и две кнопки. Пусть нажатие на первую кнопку выводит текст первого абзаца, а нажатие на вторую кнопку - текст второго абзаца.
+
+// const btn1 = document.querySelector('input[value="кнопка1"]');
+// const btn2 = document.querySelector('input[value="кнопка2"]');
+// const p1 = document.querySelector("#parag1");
+// const p2 = document.querySelector("#parag2");
+
+// btn1.addEventListener("click", () => {
+//   console.log(Number(p1.innerHTML) + Number(p2.innerHTML));
+// });
+
+// btn2.addEventListener("click", () => {
+//   let text = p2.innerHTML;
+//   console.log(text);
+//   p2.innerHTML = `<b>${text}</b>`;
+// });
