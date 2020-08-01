@@ -733,3 +733,13 @@ console.log(typeof !!"444"); //boolean: true
 //   console.log(text);
 //   p2.innerHTML = `<b>${text}</b>`;
 // });
+// ---------------------------------------------------------------------------------------------------------
+
+// document.querySelector("input[value='btn1']").addEventListener("click", () => {
+//   document.querySelector("#parag1").innerHTML =
+//     "!" + document.querySelector("#parag1").innerHTML;
+// });
+
+// document.querySelector("input[value='btn2']").addEventListener("click", () => {
+//   document.querySelector("#parag1").innerHTML = "goodbay";
+// });
