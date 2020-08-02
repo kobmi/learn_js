@@ -5,31 +5,29 @@ window.addEventListener("DOMContentLoaded", () => {
     tabsContent = document.querySelectorAll(".tabcontent"),
     tabsParent = document.querySelector(".tabheader__items");
 
-  function hideTabContent() {
+  const hideTabsContent = () => {
     tabsContent.forEach((item) => {
-      //   item.style.display = "none";
       item.classList.add("hide");
-      item.classList.remove("show");
     });
     tabs.forEach((item) => {
       item.classList.remove("tabheader__item_active");
     });
-  }
+  };
 
-  function showTabContent(i = 0) {
+  const showTabContent = (i = 0) => {
     tabsContent[i].classList.add("show", "fade");
     tabsContent[i].classList.remove("hide");
     tabs[i].classList.add("tabheader__item_active");
-  }
+  };
 
-  hideTabContent();
+  hideTabsContent();
   showTabContent();
 
   tabsParent.addEventListener("click", (e) => {
-    if (e.target && e.target.classList.contains("tabheader__item")) {
+    if (e.target && e.target.matches(".tabheader__item")) {
       tabs.forEach((item, i) => {
         if (e.target == item) {
-          hideTabContent();
+          hideTabsContent();
           showTabContent(i);
         }
       });
