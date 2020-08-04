@@ -743,3 +743,83 @@ console.log(typeof !!"444"); //boolean: true
 // document.querySelector("input[value='btn2']").addEventListener("click", () => {
 //   document.querySelector("#parag1").innerHTML = "goodbay";
 // });
+
+// ----------------------------------------------this-----------------------------
+// 1) обычная функция: this = window, use strict = undefind
+// function showThis(a, b) {
+//   console.log(this);
+//   function sum() {
+//     console.log(this);
+//     return a + b;
+//   }
+//   console.log(sum());
+// }
+// showThis(4, 5);
+
+// 2) контекст у методов обьекта - сам обьект
+// const obj = {
+//   a: 20,
+//   b: 15,
+//   sum: function () {
+//     function shout() {
+//       console.log(this);
+//     }
+//     shout();
+//   },
+// };
+
+// obj.sum();
+
+// 3) this в конструкторах и классах - это новый экземпляр объекта
+
+// function User(name, id) {
+//   this.name = name;
+//   this.id = id;
+//   this.human = true;
+//   this.hello = function () {
+//     console.log(`Hello ${this.name}`);
+//   };
+// }
+
+// let Ivan = new User("Ivan", 1);
+
+// 4)Ручная привязка this (call, apply, bind)
+// function sayName(surname) {
+//   console.log(this);
+//   console.log(this.name + surname);
+// }
+
+// const user = {
+//   name: "sergey",
+// };
+
+// sayName.call(user, "Petrov");
+// sayName.apply(user, ["Petrov", "Podolskyi"]);
+
+// function count(num) {
+//   return this * num;
+// }
+
+// const double = count.bind(2);
+// console.log(double(3));
+
+// const btn = document.querySelector(".btn");
+
+// btn.addEventListener("click", function () {
+//   console.log(this); // контекст сама кнопка
+//   //   this.style.backgroundColor = "red";
+// });
+
+// const obj = {
+//   num: 5,
+//   sayNumber: function () {
+//     const say = () => {
+//       console.log(this);
+//     };
+//     say();
+//   },
+// };
+
+// obj.sayNumber();
+
+

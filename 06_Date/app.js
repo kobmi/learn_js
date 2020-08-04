@@ -1,4 +1,4 @@
-"usestrict";
+"use strict";
 
 // let now = new Date();
 // ----------------------------------------------------------------Get
@@ -26,3 +26,18 @@
 
 // let end = new Date();
 // console.log(`${end - start}msec`);
+//-----------------------------------------------------------------------------------------
+
+// let date = new Date();
+// 04.08.2020
+// console.log(date.getFullYear()); // 2020
+// console.log(date.getMonth()); // 7ой август
+// console.log(date.getDate()); // 4 день месяца
+// console.log(date.getDay()); // 2 день недели
+
+// console.log(date.getHours()); // часы
+// console.log(date.getMinutes()); // минуты
+// console.log(date.getSeconds()); // секунды
+
+// console.log()
+
