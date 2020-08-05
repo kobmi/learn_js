@@ -26,6 +26,7 @@ P.S. Здесь есть несколько вариантов решения з
 
 "use strict";
 
+// Создали ДБ с фильмами
 document.addEventListener("DOMContentLoaded", () => {
   const movieDB = {
     movies: [
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
   };
 
+  
   const adv = document.querySelectorAll(".promo__adv img"),
     poster = document.querySelector(".promo__bg"),
     genre = poster.querySelector(".promo__genre"),
