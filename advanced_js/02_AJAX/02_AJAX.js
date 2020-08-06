@@ -11,10 +11,9 @@ inputUah.addEventListener("input", () => {
   request.send();
 
   request.addEventListener("readystatechange", () => {
-    if (request.readyState === 4 && request.status === 200) {
-      console.log(request.response);
+    if (request.status === 200) {
       const data = JSON.parse(request.response);
-      inputUsd.value = (+inputUah.value / data.current.usd);
+      inputUsd.value = +inputUah.value / data.current.usd;
     } else {
       inputUsd.value = "Ошибка";
     }
