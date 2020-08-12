@@ -1,56 +1,46 @@
 "use strict";
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", function () {
   // Tabs
-  const tabs = document.querySelectorAll(".tabheader__item"),
-    tabsContent = document.querySelectorAll(".tabcontent"),
-    tabsParent = document.querySelector(".tabheader__items"),
-    choiceGenderBtns = document.querySelectorAll(
-      "#gender .calculating__choose-item"
-    ),
-    choiceGenderBtnsParent = document.querySelector("#gender");
 
-  const hideTabsContent = () => {
+  let tabs = document.querySelectorAll(".tabheader__item"),
+    tabsContent = document.querySelectorAll(".tabcontent"),
+    tabsParent = document.querySelector(".tabheader__items");
+
+  function hideTabContent() {
     tabsContent.forEach((item) => {
       item.classList.add("hide");
-      item.classList.remove("show");
+      item.classList.remove("show", "fade");
     });
+
     tabs.forEach((item) => {
       item.classList.remove("tabheader__item_active");
     });
-  };
+  }
 
-  const showTabsContent = (i = 0) => {
+  function showTabContent(i = 0) {
     tabsContent[i].classList.add("show", "fade");
     tabsContent[i].classList.remove("hide");
     tabs[i].classList.add("tabheader__item_active");
-  };
+  }
 
-  hideTabsContent();
-  showTabsContent();
-  tabsParent.addEventListener("click", (e) => {
-    if (e.target && e.target.matches(".tabheader__item")) {
+  hideTabContent();
+  showTabContent();
+
+  tabsParent.addEventListener("click", function (event) {
+    const target = event.target;
+    if (target && target.classList.contains("tabheader__item")) {
       tabs.forEach((item, i) => {
-        if (e.target == item) {
-          hideTabsContent();
-          showTabsContent(i);
+        if (target == item) {
+          hideTabContent();
+          showTabContent(i);
         }
       });
     }
   });
 
-  choiceGenderBtnsParent.addEventListener("click", (e) => {
-    if (e.target && e.target.matches(".calculating__choose-item")) {
-      choiceGenderBtns.forEach((item) => {
-        if (!item.classList.contains("calculating__choose-item_active")) {
-          item.classList.add("calculating__choose-item_active");
-        } else {
-          item.classList.remove("calculating__choose-item_active");
-        }
-      });
-    }
-  });
-  //   Timer
-  const deadline = "2020-08-15";
+  // Timer
+
+  const deadline = "2020-05-11";
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -102,44 +92,43 @@ window.addEventListener("DOMContentLoaded", () => {
 
   setClock(".timer", deadline);
 
-  //   Modal
-  const modalTrigger = document.querySelectorAll("[data-modal]"),
-    modal = document.querySelector(".modal"),
-    modalCloseBtn = document.querySelector("[data-close]");
+  // Modal
 
-  function openModal() {
-    //modal.classList.add("show");
-    //modal.classList.remove("hide");
-    modal.classList.toggle("show");
-    document.body.style.overflow = "hidden";
-    clearInterval(modalTimerId);
-  }
-  function closeModal() {
-    // modal.classList.add("hide");
-    // modal.classList.remove("show");
-    modal.classList.toggle("show");
-    document.body.style.overflow = "";
-  }
+  const modalTrigger = document.querySelectorAll("[data-modal]"),
+    modal = document.querySelector(".modal");
+
   modalTrigger.forEach((btn) => {
     btn.addEventListener("click", openModal);
   });
 
-  modalCloseBtn.addEventListener("click", closeModal);
+  function closeModal() {
+    modal.classList.add("hide");
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  function openModal() {
+    modal.classList.add("show");
+    modal.classList.remove("hide");
+    document.body.style.overflow = "hidden";
+    clearInterval(modalTimerId);
+  }
 
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    if (e.target === modal || e.target.getAttribute("data-close") == "") {
       closeModal();
     }
   });
+
   document.addEventListener("keydown", (e) => {
     if (e.code === "Escape" && modal.classList.contains("show")) {
       closeModal();
     }
   });
 
-  //   Modal after some time
-  const modalTimerId = setTimeout(openModal, 5000);
-  //   modal after scroll
+  const modalTimerId = setTimeout(openModal, 300000);
+  // Изменил значение, чтобы не отвлекало
+
   function showModalByScroll() {
     if (
       window.pageYOffset + document.documentElement.clientHeight >=
@@ -150,6 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
   window.addEventListener("scroll", showModalByScroll);
+
   // Используем классы для создание карточек меню
 
   class MenuCard {
@@ -180,15 +170,15 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       element.innerHTML = `
-            <img src=${this.src} alt=${this.alt}>
-            <h3 class="menu__item-subtitle">${this.title}</h3>
-            <div class="menu__item-descr">${this.descr}</div>
-            <div class="menu__item-divider"></div>
-            <div class="menu__item-price">
-                <div class="menu__item-cost">Цена:</div>
-                <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-            </div>
-        `;
+                <img src=${this.src} alt=${this.alt}>
+                <h3 class="menu__item-subtitle">${this.title}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Цена:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+                </div>
+            `;
       this.parent.append(element);
     }
   }
@@ -215,8 +205,94 @@ window.addEventListener("DOMContentLoaded", () => {
     "img/tabs/elite.jpg",
     "elite",
     "Меню “Премиум”",
-    "В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан! ",
+    "В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!",
     21,
     ".menu .container"
   ).render();
+
+  // Forms
+
+  const forms = document.querySelectorAll("form");
+  const message = {
+    loading: "img/form/spinner.svg",
+    success: "Спасибо! Скоро мы с вами свяжемся",
+    failure: "Что-то пошло не так...",
+  };
+
+  forms.forEach((item) => {
+    postData(item);
+  });
+
+  function postData(form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      let statusMessage = document.createElement("img");
+      statusMessage.src = message.loading;
+      statusMessage.style.cssText = `
+                display: block;
+                margin: 0 auto;
+            `;
+      form.insertAdjacentElement("afterend", statusMessage);
+
+      const formData = new FormData(form);
+
+      const object = {};
+      formData.forEach(function (value, key) {
+        object[key] = value;
+      });
+
+      fetch("server.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(object),
+      })
+        .then((data) => {
+          console.log(data);
+          showThanksModal(message.success);
+          statusMessage.remove();
+        })
+        .catch(() => {
+          showThanksModal(message.failure);
+        })
+        .finally(() => {
+          form.reset();
+        });
+    });
+  }
+
+  function showThanksModal(message) {
+    const prevModalDialog = document.querySelector(".modal__dialog");
+
+    prevModalDialog.classList.add("hide");
+    openModal();
+
+    const thanksModal = document.createElement("div");
+    thanksModal.classList.add("modal__dialog");
+    thanksModal.innerHTML = `
+            <div class="modal__content">
+                <div class="modal__close" data-close>×</div>
+                <div class="modal__title">${message}</div>
+            </div>
+        `;
+    document.querySelector(".modal").append(thanksModal);
+    setTimeout(() => {
+      thanksModal.remove();
+      prevModalDialog.classList.add("show");
+      prevModalDialog.classList.remove("hide");
+      closeModal();
+    }, 4000);
+  }
 });
+//   Fetch Api
+//   fetch("https://jsonplaceholder.typicode.com/posts", {
+//     method: "POST",
+//     body: JSON.stringify({ name: "Sergey" }),
+//     headers: {
+//       "Content-type": "application/json",
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((json) => console.log(json));
